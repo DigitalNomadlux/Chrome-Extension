@@ -6,9 +6,11 @@ const ulEl = document.getElementById("ul-el");
 
 
 inputBtn.addEventListener('click', function() {
-  myLeads.push(inputEl.value)
-  inputEl.value = ""
-  renderLeads()
+  myLeads.push(inputEl.value);
+  inputEl.value = "";
+  localStorage.setItem("myLeads", JSON.stringify(myLeads));
+  let leadsFromLocalStorage = JSON.parse(localStorage.getItem('myLeads'))
+  renderLeads();
 });
 
 function renderLeads() {
@@ -21,6 +23,5 @@ function renderLeads() {
         </a>
       </li>`
   };
-  console.log(listItems)
   ulEl.innerHTML = listItems;
 }
